@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KONSTRU builds extraordinary, timeless projects: luxury hotels, world-class equestrian stables &amp; estates, and complex, beautiful large-scale architecture.">
+  <title>KONSTRU | Timeless Construction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Inter:wght@700&amp;display=swap');
+    
+    :root {
+      --k-black: #000000;
+      --k-white: #ffffff;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    .editorial-bw {
+      filter: grayscale(0.88) contrast(1.12) brightness(0.96);
+      transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover .editorial-bw {
+      filter: grayscale(0.82) contrast(1.15) brightness(0.98);
+    }
+    
+    .project-card {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    }
+    
+    .section-heading {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: #000000;
+      transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    
+    .filter-btn {
+      font-size: 0.75rem;
+      letter-spacing: 0.125em;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+    }
+    
+    .filter-btn.active {
+      background-color: #000000;
+      color: #ffffff;
+      border-color: #000000;
+    }
+    
+    .modal {
+      animation: modalEnter 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    
+    @keyframes modalEnter {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .article-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .article-card:hover {
+      transform: translateY(-3px);
+    }
+    
+    .profile-card {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .profile-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .luxury-input {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .luxury-input:focus {
+      border-color: #000000;
+      box-shadow: 0 0 0 1px #000000;
+      outline: none;
+    }
+    
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+    
+    .lang-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .lang-btn.active {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    
+    .gallery-thumb {
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    
+    .gallery-thumb.active {
+      border-color: #000000;
+      opacity: 1;
+    }
+    
+    .gallery-thumb:hover {
+      opacity: 0.85;
+    }
+    
+    .nav-scrolled {
+      box-shadow: 0 1px 0 0 #f4f4f4;
+    }
+    
+    .stat {
+      font-feature-settings: "tnum";
+    }
+    
+    .premium-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body class="bg-[#f8f8f8] text-[#111111] antialiased">
+  <!-- Fixed Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#f4f4f4]">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="#" class="text-3xl font-bold tracking-[-1.5px] text-black">KONSTRU</a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-x-9 text-sm">
+        <a href="#projects" class="nav-link text-[#111111] font-medium" data-i18n="nav.projects">Projects</a>
+        <a href="#about" class="nav-link text-[#111111] font-medium" data-i18n="nav.about">About</a>
+        <a href="#insights" class="nav-link text-[#111111] font-medium" data-i18n="nav.insights">Insights</a>
+        <a href="#contact" class="nav-link text-[#111111] font-medium" data-i18n="nav.contact">Contact</a>
+      </div>
+
+      <!-- Language Toggle + Mobile -->
+      <div class="flex items-center gap-x-4">
+        <!-- Language Toggle Desktop -->
+        <div class="hidden md:flex items-center rounded-full border border-[#e5e5e5] overflow-hidden text-xs font-medium">
+          <button id="lang-en" 
+                  class="lang-btn px-4 py-[7px] text-[#111111]" 
+                  data-lang="en">EN</button>
+          <button id="lang-es" 
+                  class="lang-btn px-4 py-[7px] text-[#111111]" 
+                  data-lang="es">ES</button>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="mobile-menu-btn"
+                class="md:hidden w-10 h-10 flex items-center justify-center text-black"
+                aria-label="Open menu">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60] bg-white">
+    <div class="flex flex-col h-full">
+      <div class="h-20 flex items-center justify-between px-6 border-b border-[#f4f4f4]">
+        <div class="text-3xl font-bold tracking-[-1.5px] text-black">KONSTRU</div>
+        <button id="mobile-close-btn" class="w-10 h-10 flex items-center justify-center" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="flex-1 flex flex-col px-6 pt-8 text-lg font-medium">
+        <a href="#projects" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.projects">Projects</a>
+        <a href="#about" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.about">About</a>
+        <a href="#insights" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.insights">Insights</a>
+        <a href="#contact" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.contact">Contact</a>
+      </div>
+
+      <div class="px-6 pb-10">
+        <!-- Language Toggle Mobile -->
+        <div class="flex items-center rounded-full border border-[#e5e5e5] overflow-hidden text-sm font-medium w-fit">
+          <button class="mobile-lang-btn px-5 py-2.5 text-[#111111]" data-lang="en">EN</button>
+          <button class="mobile-lang-btn px-5 py-2.5 text-[#111111]" data-lang="es">ES</button>
+        </div>
+        <div class="mt-8 text-xs text-[#666]">© KONSTRU</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background Image -->
+    <div id="hero-bg" 
+         class="absolute inset-0 bg-cover bg-center editorial-bw"
+         style="background-image: url('https://picsum.photos/id/1015/2000/1400')"></div>
+    
+    <!-- Subtle overlay for drama and legibility -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/25 to-white/70"></div>
+    
+    <div class="relative z-10 px-6 text-center max-w-5xl">
+      <h1 class="text-[4.25rem] md:text-[6.25rem] lg:text-[7.25rem] font-bold tracking-[-4.5px] leading-[0.92] text-black">
+        KONSTRU
+      </h1>
+      <p class="mt-5 text-xl md:text-2xl tracking-[-0.2px] text-[#1a1a1a] max-w-md mx-auto" data-i18n="hero.tagline">
+        Timeless construction. Uncompromising excellence.
+      </p>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+      <div class="text-[10px] tracking-[3px] text-[#666] mb-1.5 font-medium">SCROLL</div>
+      <div class="scroll-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4 mb-10">
+      <h2 class="section-heading text-black" data-i18n="projects.heading">Selected Works</h2>
+      
+      <!-- Filters -->
+      <div id="project-filters" class="flex flex-wrap gap-2">
+        <button class="filter-btn border border-[#e5e5e5] text-black active" data-filter="all">All</button>
+        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="stables">Stables</button>
+        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="hotels">Hotels</button>
+        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="residences">Residences</button>
+        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="landmarks">Landmarks</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Populated via JavaScript -->
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-white py-20 border-t border-[#f4f4f4]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <p class="text-[1.35rem] md:text-3xl leading-tight tracking-[-0.6px] font-semibold text-black" data-i18n="about.philosophy">
+          We exist to build legacies — projects of such quiet power and enduring craft that they become part of the land and the story of those who commission them. We move with speed because we move with certainty. We earn trust because we never compromise it.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="text-center text-sm tracking-[3px] font-medium text-[#666]" data-i18n="about.leadership">THE LEADERSHIP</h3>
+      </div>
+
+      <!-- Leadership Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Jesus -->
+        <div class="profile-card bg-[#f8f8f8] p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+            <img src="https://picsum.photos/id/1005/400/400" class="editorial-bw w-full h-full object-cover" alt="Jesus — Head of Construction">
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tight">Jesus</div>
+            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.jesus.role">Head of Construction</div>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.jesus.bio">
+            Master builder with more than thirty years leading complex projects across the Americas. Jesus is on site from groundbreaking to final walkthrough. His standard is uncompromising: if it is not perfect, it is not finished.
+          </p>
+        </div>
+
+        <!-- Leandro -->
+        <div class="profile-card bg-[#f8f8f8] p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+            <img src="https://picsum.photos/id/1009/400/400" class="editorial-bw w-full h-full object-cover" alt="Leandro — Head of Commercial">
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tight">Leandro</div>
+            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.leandro.role">Head of Commercial</div>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.leandro.bio">
+            He bridges vision and execution. Leandro ensures that every decision protects the client’s investment, timeline, and original intent. He is the guardian of clarity in a world of ambiguity.
+          </p>
+        </div>
+
+        <!-- Luke -->
+        <div class="profile-card bg-[#f8f8f8] p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+            <img src="https://picsum.photos/id/64/400/400" class="editorial-bw w-full h-full object-cover" alt="Luke — Head of Strategy">
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tight">Luke</div>
+            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.luke.role">Head of Strategy</div>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.luke.bio">
+            Luke orchestrates the invisible: schedules, supply chains, risk, and contingency. His rigor creates the conditions for beauty to emerge on time and without surprise.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto mt-14 text-center">
+        <p class="text-base text-[#333]" data-i18n="about.closing">
+          Their distinct strengths — on-the-ground mastery, client advocacy, and strategic precision — form an unmatched partnership for delivering extraordinary projects with certainty and grace.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights / Journal -->
+  <section id="insights" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="flex items-end justify-between mb-9">
+      <h2 class="section-heading text-black" data-i18n="insights.heading">Journal</h2>
+    </div>
+
+    <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- Populated via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-white border-t border-[#f4f4f4] py-20">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-11">
+        <h2 class="text-[2.5rem] md:text-[3rem] font-bold tracking-[-1.5px] leading-none text-black" data-i18n="contact.heading">
+          Ready to build something extraordinary?
+        </h2>
+      </div>
+
+      <!-- Form -->
+      <form id="contact-form" class="space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.name">NAME</label>
+            <input type="text" id="name" name="name" required 
+                   class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] placeholder:text-[#888]" 
+                   placeholder="Alex Rivera">
+          </div>
+          <div>
+            <label for="email" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.email">EMAIL</label>
+            <input type="email" id="email" name="email" required 
+                   class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] placeholder:text-[#888]" 
+                   placeholder="you@domain.com">
+          </div>
+        </div>
+
+        <div>
+          <label for="project-type" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.projectType">PROJECT TYPE (OPTIONAL)</label>
+          <select id="project-type" name="project-type" 
+                  class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] text-[#111]">
+            <option value="" data-i18n="contact.select">Select a category</option>
+            <option value="stables" data-i18n="filters.stables">Stables</option>
+            <option value="hotels" data-i18n="filters.hotels">Hotels</option>
+            <option value="residences" data-i18n="filters.residences">Residences</option>
+            <option value="landmarks" data-i18n="filters.landmarks">Landmarks</option>
+            <option value="other" data-i18n="contact.other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.message">MESSAGE</label>
+          <textarea id="message" name="message" rows="5" required 
+                    class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-4 text-[15px] resize-y min-h-[120px] placeholder:text-[#888]"
+                    placeholder="Tell us about the project..."></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" 
+                  class="w-full md:w-auto px-12 py-4 bg-black hover:bg-[#1a1a1a] transition-colors text-white text-sm tracking-[1.5px] font-medium">
+            <span data-i18n="contact.submit">SEND INQUIRY</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Success State -->
+      <div id="form-success" class="hidden bg-[#f8f8f8] border border-[#e5e5e5] p-9 text-center">
+        <div class="mx-auto w-10 h-10 rounded-full bg-black flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7" />
+          </svg>
+        </div>
+        <h4 class="font-semibold text-xl tracking-tight" data-i18n="contact.successTitle">Thank you.</h4>
+        <p class="mt-3 text-[#444] text-[15px] max-w-xs mx-auto" data-i18n="contact.successBody">
+          Your message has been received. A member of the KONSTRU team will contact you within 48 hours.
+        </p>
+        <button id="reset-form-btn"
+                class="mt-7 text-xs tracking-[2px] border-b border-black pb-px hover:text-[#444]" data-i18n="contact.sendAnother">
+          SEND ANOTHER MESSAGE
+        </button>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="mailto:hello@konstru.com" class="text-sm font-medium underline decoration-1 underline-offset-4 hover:decoration-2">hello@konstru.com</a>
+        <span class="mx-2.5 text-[#e5e5e5]">·</span>
+        <span class="text-sm text-[#555]" data-i18n="contact.worldwide">We work worldwide.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer class="border-t border-[#f4f4f4] bg-white py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-y-2 text-xs text-[#666]">
+      <div>© <span data-i18n="footer.year">2026</span> KONSTRU. All rights reserved.</div>
+      <div class="tracking-widest">EST. 2012</div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="project-modal" class="hidden fixed inset-0 z-[70] items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-8">
+    <div onclick="event.target.id === 'project-modal' && closeProjectModal()" class="absolute inset-0"></div>
+    
+    <div class="modal relative bg-white w-full max-w-5xl max-h-[92vh] overflow-hidden shadow-2xl flex flex-col">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-7 pt-6 pb-4 border-b border-[#f4f4f4]">
+        <div>
+          <div id="modal-project-title" class="font-bold text-3xl tracking-[-1px]"></div>
+          <div id="modal-project-location" class="text-sm text-[#666] mt-0.5"></div>
+        </div>
+        <button onclick="closeProjectModal()" class="w-9 h-9 flex items-center justify-center text-[#666] hover:text-black" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.75" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto">
+        <!-- Gallery -->
+        <div class="relative bg-[#f8f8f8]">
+          <div class="aspect-[16/10] w-full overflow-hidden">
+            <img id="modal-main-image" class="w-full h-full object-cover editorial-bw" alt="">
+          </div>
+          
+          <!-- Gallery Controls -->
+          <div class="absolute bottom-4 right-4 flex gap-2 bg-white/95 px-2 py-1.5 rounded">
+            <button id="gallery-prev" class="w-8 h-8 flex items-center justify-center border border-[#e5e5e5] hover:bg-[#f4f4f4] transition" aria-label="Previous image">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button id="gallery-next" class="w-8 h-8 flex items-center justify-center border border-[#e5e5e5] hover:bg-[#f4f4f4] transition" aria-label="Next image">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <div id="modal-thumbnails" class="flex gap-3 px-7 pt-4 pb-5 bg-white overflow-x-auto"></div>
+
+        <!-- Content -->
+        <div class="px-7 pb-9 pt-1 grid md:grid-cols-5 gap-x-8 gap-y-8">
+          <!-- Description -->
+          <div class="md:col-span-3">
+            <div class="uppercase text-xs tracking-[2px] text-[#666] mb-3" data-i18n="modal.projectDetails">THE PROJECT</div>
+            <div id="modal-project-desc" class="premium-text text-[#1a1a1a] leading-relaxed"></div>
+          </div>
+
+          <!-- Details -->
+          <div class="md:col-span-2">
+            <div class="uppercase text-xs tracking-[2px] text-[#666] mb-4" data-i18n="modal.keyDetails">KEY DETAILS</div>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
+                <span class="text-[#666]" data-i18n="modal.year">Year</span>
+                <span id="modal-year" class="font-medium"></span>
+              </div>
+              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
+                <span class="text-[#666]" data-i18n="modal.size">Size</span>
+                <span id="modal-size" class="font-medium"></span>
+              </div>
+              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
+                <span class="text-[#666]" data-i18n="modal.duration">Duration</span>
+                <span id="modal-duration" class="font-medium"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[#666]" data-i18n="modal.location">Location</span>
+                <span id="modal-location-detail" class="font-medium"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article Modal -->
+  <div id="article-modal" class="hidden fixed inset-0 z-[70] items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-8">
+    <div onclick="event.target.id === 'article-modal' && closeArticleModal()" class="absolute inset-0"></div>
+    
+    <div class="modal relative bg-white w-full max-w-2xl shadow-2xl overflow-hidden">
+      <div class="px-8 pt-8 pb-6">
+        <div class="flex justify-between items-start">
+          <div id="modal-article-title" class="font-bold text-[28px] leading-[1.05] tracking-[-1px] pr-8"></div>
+          <button onclick="closeArticleModal()" class="w-9 h-9 flex-shrink-0 flex items-center justify-center text-[#666] hover:text-black -mt-1 -mr-1" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.75" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div class="mt-7 text-[15px] leading-relaxed text-[#1a1a1a]" id="modal-article-content"></div>
+      </div>
+      
+      <div class="border-t border-[#f4f4f4] px-8 py-4 bg-[#f8f8f8]">
+        <div class="text-xs text-[#666] tracking-widest" data-i18n="modal.journal">KONSTRU JOURNAL</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tailwind configuration
+    function initTailwind() {
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+            }
+          }
+        }
+      };
+    }
+
+    // Global state
+    let currentLang = 'en';
+    let currentFilter = 'all';
+    let currentProject = null;
+    let currentArticle = null;
+    let currentImageIndex = 0;
+    let currentProjectImages = [];
+
+    // Translations for static content
+    const translations = {
+      'nav.projects': { en: 'Projects', es: 'Proyectos' },
+      'nav.about': { en: 'About', es: 'Nosotros' },
+      'nav.insights': { en: 'Insights', es: 'Perspectivas' },
+      'nav.contact': { en: 'Contact', es: 'Contacto' },
+      
+      'hero.tagline': {
+        en: 'Timeless construction. Uncompromising excellence.',
+        es: 'Construcción atemporal. Excelencia sin concesiones.'
+      },
+      
+      'projects.heading': { en: 'Selected Works', es: 'Obras Seleccionadas' },
+      
+      'about.philosophy': {
+        en: 'We exist to build legacies — projects of such quiet power and enduring craft that they become part of the land and the story of those who commission them. We move with speed because we move with certainty. We earn trust because we never compromise it.',
+        es: 'Existimos para construir legados — proyectos de tal poder silencioso y artesanía perdurable que se convierten en parte de la tierra y de la historia de quienes los encargan. Nos movemos con velocidad porque nos movemos con certeza. Ganamos confianza porque nunca la comprometemos.'
+      },
+      'about.leadership': { en: 'THE LEADERSHIP', es: 'EL LIDERAZGO' },
+      'about.jesus.role': { en: 'Head of Construction', es: 'Jefe de Construcción' },
+      'about.jesus.bio': {
+        en: 'Master builder with more than thirty years leading complex projects across the Americas. Jesus is on site from groundbreaking to final walkthrough. His standard is uncompromising: if it is not perfect, it is not finished.',
+        es: 'Maestro constructor con más de treinta años liderando proyectos complejos en las Américas. Jesús está en el sitio desde la primera excavación hasta la entrega final. Su estándar es inquebrantable: si no es perfecto, no está terminado.'
+      },
+      'about.leandro.role': { en: 'Head of Commercial', es: 'Jefe Comercial' },
+      'about.leandro.bio': {
+        en: 'He bridges vision and execution. Leandro ensures that every decision protects the client’s investment, timeline, and original intent. He is the guardian of clarity in a world of ambiguity.',
+        es: 'Conecta la visión con la ejecución. Leandro garantiza que cada decisión proteja la inversión, el cronograma y la intención original del cliente. Es el guardián de la claridad en un mundo de ambigüedad.'
+      },
+      'about.luke.role': { en: 'Head of Strategy', es: 'Jefe de Estrategia' },
+      'about.luke.bio': {
+        en: 'Luke orchestrates the invisible: schedules, supply chains, risk, and contingency. His rigor creates the conditions for beauty to emerge on time and without surprise.',
+        es: 'Luke orquesta lo invisible: cronogramas, cadenas de suministro, riesgos y contingencias. Su rigor crea las condiciones para que la belleza emerja a tiempo y sin sorpresas.'
+      },
+      'about.closing': {
+        en: 'Their distinct strengths — on-the-ground mastery, client advocacy, and strategic precision — form an unmatched partnership for delivering extraordinary projects with certainty and grace.',
+        es: 'Sus fortalezas complementarias —maestría en obra, defensa del cliente y precisión estratégica— forman una alianza inigualable para entregar proyectos extraordinarios con certeza y elegancia.'
+      },
+      
+      'insights.heading': { en: 'Journal', es: 'Perspectivas' },
+      
+      'contact.heading': {
+        en: 'Ready to build something extraordinary?',
+        es: '¿Listo para construir algo extraordinario?'
+      },
+      'contact.name': { en: 'NAME', es: 'NOMBRE' },
+      'contact.email': { en: 'EMAIL', es: 'CORREO' },
+      'contact.projectType': { en: 'PROJECT TYPE (OPTIONAL)', es: 'TIPO DE PROYECTO (OPCIONAL)' },
+      'contact.message': { en: 'MESSAGE', es: 'MENSAJE' },
+      'contact.submit': { en: 'SEND INQUIRY', es: 'ENVIAR CONSULTA' },
+      'contact.select': { en: 'Select a category', es: 'Seleccionar una categoría' },
+      'contact.other': { en: 'Other', es: 'Otro' },
+      'contact.successTitle': { en: 'Thank you.', es: 'Gracias.' },
+      'contact.successBody': {
+        en: 'Your message has been received. A member of the KONSTRU team will contact you within 48 hours.',
+        es: 'Hemos recibido su mensaje. Un miembro del equipo de KONSTRU se pondrá en contacto con usted en un plazo de 48 horas.'
+      },
+      'contact.sendAnother': { en: 'SEND ANOTHER MESSAGE', es: 'ENVIAR OTRO MENSAJE' },
+      'contact.worldwide': { en: 'We work worldwide.', es: 'Trabajamos en todo el mundo.' },
+      
+      'footer.year': { en: '2026', es: '2026' },
+      
+      'filters.all': { en: 'All', es: 'Todos' },
+      'filters.stables': { en: 'Stables', es: 'Establos' },
+      'filters.hotels': { en: 'Hotels', es: 'Hoteles' },
+      'filters.residences': { en: 'Residences', es: 'Residencias' },
+      'filters.landmarks': { en: 'Landmarks', es: 'Monumentos' },
+      
+      'modal.projectDetails': { en: 'THE PROJECT', es: 'EL PROYECTO' },
+      'modal.keyDetails': { en: 'KEY DETAILS', es: 'DETALLES CLAVE' },
+      'modal.year': { en: 'Year', es: 'Año' },
+      'modal.size': { en: 'Size', es: 'Superficie' },
+      'modal.duration': { en: 'Duration', es: 'Duración' },
+      'modal.location': { en: 'Location', es: 'Ubicación' },
+      'modal.journal': { en: 'KONSTRU JOURNAL', es: 'PERSPECTIVAS KONSTRU' }
+    };
+
+    // Projects data (bilingual)
+    const projects = [
+      {
+        id: 1,
+        category: 'stables',
+        title: { en: 'Elysian Stables', es: 'Establos Elysian' },
+        location: { en: 'Jackson Hole, Wyoming', es: 'Jackson Hole, Wyoming' },
+        year: '2022',
+        size: { en: '28,000 sq ft', es: '2.600 m²' },
+        duration: { en: '14 months', es: '14 meses' },
+        images: ['160', '29', '30', '1015'],
+        desc: {
+          en: 'Nestled against the majestic Teton mountains, Elysian Stables is a masterwork of equestrian architecture. Designed for both performance and serenity, the facility features climate-controlled stables, a competition-grade arena, and private owner suites. Every element was chosen to honor the horse and the land.',
+          es: 'Anidado contra las majestuosas montañas Teton, los Establos Elysian son una obra maestra de la arquitectura ecuestre. Diseñado tanto para el rendimiento como para la serenidad, el complejo cuenta con establos climatizados, una arena de competencia de primer nivel y suites privadas para propietarios. Cada elemento fue elegido para honrar al caballo y a la tierra.'
+        }
+      },
+      {
+        id: 2,
+        category: 'hotels',
+        title: { en: 'The Aurelia', es: 'The Aurelia' },
+        location: { en: 'Chianti, Tuscany, Italy', es: 'Chianti, Toscana, Italia' },
+        year: '2021',
+        size: { en: '65,000 sq ft', es: '6.000 m²' },
+        duration: { en: '22 months', es: '22 meses' },
+        images: ['201', '251', '1018', '133'],
+        desc: {
+          en: 'A boutique hotel of rare restraint and quiet grandeur. The Aurelia restores a historic villa and extends it with new wings that feel as if they have always belonged. Stone, timber, and light define interiors of timeless elegance. Guests experience the landscape as much as the architecture.',
+          es: 'Un hotel boutique de rara contención y grandeza silenciosa. The Aurelia restaura una villa histórica y la extiende con nuevas alas que parecen haber pertenecido siempre. Piedra, madera y luz definen interiores de elegancia atemporal. Los huéspedes experimentan el paisaje tanto como la arquitectura.'
+        }
+      },
+      {
+        id: 3,
+        category: 'residences',
+        title: { en: 'Cliffside Residence', es: 'Residencia Acantilado' },
+        location: { en: 'Big Sur, California', es: 'Big Sur, California' },
+        year: '2023',
+        size: { en: '12,500 sq ft', es: '1.160 m²' },
+        duration: { en: '19 months', es: '19 meses' },
+        images: ['1015', '160', '30', '1005'],
+        desc: {
+          en: 'Perched above the Pacific, this residence merges with its dramatic site. Cantilevered concrete, floor-to-ceiling glass, and native materials create a home of profound calm. The project demanded engineering precision matched with absolute respect for the rugged coastline.',
+          es: 'Perchada sobre el Pacífico, esta residencia se fusiona con su sitio dramático. Hormigón en voladizo, vidrio de piso a techo y materiales nativos crean un hogar de profunda calma. El proyecto exigió precisión de ingeniería combinada con respeto absoluto por la accidentada costa.'
+        }
+      },
+      {
+        id: 4,
+        category: 'landmarks',
+        title: { en: 'The Meridian', es: 'El Meridiano' },
+        location: { en: 'Aspen, Colorado', es: 'Aspen, Colorado' },
+        year: '2020',
+        size: { en: '95,000 sq ft', es: '8.800 m²' },
+        duration: { en: '28 months', es: '28 meses' },
+        images: ['133', '201', '29', '1018'],
+        desc: {
+          en: 'The Meridian is a private cultural landmark and gathering place. A composition of stone volumes, glass pavilions, and sculpted landscape, it hosts performances, exhibitions, and intimate retreats. Built for permanence, every surface and detail was considered for the century ahead.',
+          es: 'El Meridiano es un hito cultural privado y lugar de encuentro. Una composición de volúmenes de piedra, pabellones de vidrio y paisaje esculpido, alberga actuaciones, exposiciones y retiros íntimos. Construido para la permanencia, cada superficie y detalle fue considerado para el siglo venidero.'
+        }
+      },
+      {
+        id: 5,
+        category: 'stables',
+        title: { en: 'Vespera Estate', es: 'Hacienda Vespera' },
+        location: { en: 'Santa Barbara, California', es: 'Santa Bárbara, California' },
+        year: '2024',
+        size: { en: '42,000 sq ft', es: '3.900 m²' },
+        duration: { en: '16 months', es: '16 meses' },
+        images: ['30', '160', '1015', '251'],
+        desc: {
+          en: 'Vespera Estate combines world-class equestrian facilities with an exceptional family residence. The stables are light-filled and humane. The main house frames views of the Pacific and the Santa Ynez mountains. The entire compound was delivered ahead of schedule without sacrificing a single detail.',
+          es: 'La Hacienda Vespera combina instalaciones ecuestres de clase mundial con una residencia familiar excepcional. Los establos son luminosos y humanos. La casa principal enmarca vistas al Pacífico y a las montañas Santa Ynez. Todo el complejo se entregó antes de lo previsto sin sacrificar ni un solo detalle.'
+        }
+      },
+      {
+        id: 6,
+        category: 'hotels',
+        title: { en: 'Solara Retreat', es: 'Retiro Solara' },
+        location: { en: 'Icelandic Highlands', es: 'Tierras Altas de Islandia' },
+        year: '2019',
+        size: { en: '38,000 sq ft', es: '3.530 m²' },
+        duration: { en: '26 months', es: '26 meses' },
+        images: ['1018', '133', '29', '30'],
+        desc: {
+          en: 'Set in a remote volcanic landscape, Solara Retreat is an exercise in restraint and power. Black basalt, native timber, and vast windows frame the raw beauty of Iceland. The hotel is both sanctuary and statement — a place where nature and architecture meet in perfect balance.',
+          es: 'Ubicado en un paisaje volcánico remoto, el Retiro Solara es un ejercicio de contención y poder. Basalto negro, madera nativa y vastas ventanas enmarcan la belleza cruda de Islandia. El hotel es tanto santuario como declaración: un lugar donde la naturaleza y la arquitectura se encuentran en perfecto equilibrio.'
+        }
+      }
+    ];
+
+    // Articles data (bilingual)
+    const articles = [
+      {
+        id: 1,
+        title: {
+          en: 'Why KONSTRU Builds Differently',
+          es: 'Por qué KONSTRU Construye de Manera Diferente'
+        },
+        excerpt: {
+          en: 'We reject the false choice between speed and quality.',
+          es: 'Rechazamos la falsa elección entre velocidad y calidad.'
+        },
+        content: {
+          en: `<p>We do not accept the myth that quality requires time or that speed requires sacrifice. At KONSTRU, we build differently because we plan differently, procure differently, and lead differently.</p>
+               <p>Our process begins years before the first shovel. We invest heavily in pre-construction — design coordination, material sourcing, and team alignment — so that execution is swift, certain, and exacting.</p>
+               <p>The result is not compromise. It is excellence, delivered on schedule.</p>`,
+          es: `<p>No aceptamos el mito de que la calidad requiere tiempo o que la velocidad exige sacrificio. En KONSTRU construimos de manera diferente porque planeamos, adquirimos y lideramos de manera diferente.</p>
+               <p>Nuestro proceso comienza años antes de la primera pala. Invertimos fuertemente en la pre-construcción — coordinación de diseño, abastecimiento de materiales y alineación del equipo — para que la ejecución sea rápida, segura y precisa.</p>
+               <p>El resultado no es compromiso. Es excelencia, entregada en plazo.</p>`
+        }
+      },
+      {
+        id: 2,
+        title: {
+          en: 'Quality and Speed Can (and Must) Coexist',
+          es: 'Calidad y Velocidad Pueden (y Deben) Coexistir'
+        },
+        excerpt: {
+          en: 'Precision accelerates the work rather than slowing it.',
+          es: 'La precisión acelera el trabajo en lugar de retrasarlo.'
+        },
+        content: {
+          en: `<p>In our experience, the projects that drag on are rarely the most beautiful. Delays breed doubt, cost overruns, and lost opportunities. We have built a culture and a method where precision accelerates the work rather than slowing it.</p>
+               <p>Discipline in sequencing. Clarity in communication. Certainty in procurement. These are not constraints — they are the architecture of speed.</p>
+               <p>When everyone understands the destination and the path, beauty arrives on time.</p>`,
+          es: `<p>En nuestra experiencia, los proyectos que se demoran rara vez son los más bellos. Las demoras generan dudas, sobrecostos y oportunidades perdidas. Hemos construido una cultura y un método donde la precisión acelera el trabajo en lugar de retrasarlo.</p>
+               <p>Disciplina en la secuenciación. Claridad en la comunicación. Certeza en la adquisición. Estos no son límites — son la arquitectura de la velocidad.</p>
+               <p>Cuando todos entienden el destino y el camino, la belleza llega a tiempo.</p>`
+        }
+      },
+      {
+        id: 3,
+        title: {
+          en: 'The Real Cost of Broken Promises in Construction',
+          es: 'El Verdadero Costo de las Promesas Incumplidas'
+        },
+        excerpt: {
+          en: 'Broken timelines destroy value long before the foundation is poured.',
+          es: 'Los plazos rotos destruyen valor mucho antes de verter los cimientos.'
+        },
+        content: {
+          en: `<p>The most expensive construction project is the one that fails to deliver. Broken timelines. Unexplained costs. Disappearing contractors. These are not mere inconveniences — they destroy value, relationships, and dreams.</p>
+               <p>KONSTRU was founded on the belief that a promise made must be a promise kept. We stand behind every date, every budget line, and every detail. Trust is not given; it is earned through repeated, visible integrity.</p>
+               <p>We build the projects that others cannot finish. And we finish the ones we begin.</p>`,
+          es: `<p>El proyecto de construcción más costoso es aquel que no logra entregarse. Plazos rotos. Costos inexplicables. Contratistas que desaparecen. No son simples inconvenientes — destruyen valor, relaciones y sueños.</p>
+               <p>KONSTRU nació de la convicción de que una promesa hecha debe cumplirse. Respaldamos cada fecha, cada línea del presupuesto y cada detalle. La confianza no se da; se gana mediante una integridad visible y repetida.</p>
+               <p>Construimos los proyectos que otros no pueden terminar. Y terminamos los que empezamos.</p>`
+        }
+      },
+      {
+        id: 4,
+        title: {
+          en: 'Building for the Next Century',
+          es: 'Construyendo para el Próximo Siglo'
+        },
+        excerpt: {
+          en: 'We select materials that will age with grace and intention.',
+          es: 'Elegimos materiales que envejecerán con gracia e intención.'
+        },
+        content: {
+          en: `<p>Materials matter. Craft matters. But above all, intention matters. We select stone that will patina beautifully, timber that will age with grace, and systems that will endure without constant intervention.</p>
+               <p>Our clients do not build for today. They build for their children, and for their children’s children. That is the only standard worthy of the name KONSTRU.</p>
+               <p>Timelessness is not a style. It is a discipline.</p>`,
+          es: `<p>Los materiales importan. La artesanía importa. Pero sobre todo, importa la intención. Elegimos piedra que se patine con belleza, madera que envejezca con gracia y sistemas que perduren sin intervención constante.</p>
+               <p>Nuestros clientes no construyen para hoy. Construyen para sus hijos, y para los hijos de sus hijos. Ese es el único estándar digno del nombre KONSTRU.</p>
+               <p>La atemporalidad no es un estilo. Es una disciplina.</p>`
+        }
+      }
+    ];
+
+    // Filter labels
+    const filterLabels = {
+      all: { en: 'All', es: 'Todos' },
+      stables: { en: 'Stables', es: 'Establos' },
+      hotels: { en: 'Hotels', es: 'Hoteles' },
+      residences: { en: 'Residences', es: 'Residencias' },
+      landmarks: { en: 'Landmarks', es: 'Monumentos' }
+    };
+
+    // Set language
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Persist
+      localStorage.setItem('konstruLang', lang);
+      
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[key] && translations[key][lang]) {
+          el.textContent = translations[key][lang];
+        }
+      });
+      
+      // Update language toggle buttons
+      updateLangButtons();
+      
+      // Re-render dynamic content
+      renderProjects(currentFilter);
+      renderArticles();
+      
+      // Update filter button labels for current language
+      updateFilters();
+      
+      // Update mobile nav links
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        const key = link.dataset.i18n;
+        if (translations[key] && translations[key][lang]) {
+          link.textContent = translations[key][lang];
+        }
+      });
+      
+      // Close modals if open (to avoid stale content)
+      closeProjectModal();
+      closeArticleModal();
+    }
+
+    function updateLangButtons() {
+      // Desktop
+      const btnEn = document.getElementById('lang-en');
+      const btnEs = document.getElementById('lang-es');
+      
+      if (btnEn && btnEs) {
+        if (currentLang === 'en') {
+          btnEn.classList.add('active', 'bg-black', 'text-white');
+          btnEs.classList.remove('active', 'bg-black', 'text-white');
+        } else {
+          btnEs.classList.add('active', 'bg-black', 'text-white');
+          btnEn.classList.remove('active', 'bg-black', 'text-white');
+        }
+      }
+      
+      // Mobile
+      document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+        if (btn.dataset.lang === currentLang) {
+          btn.classList.add('bg-black', 'text-white');
+        } else {
+          btn.classList.remove('bg-black', 'text-white');
+        }
+      });
+    }
+
+    // Render Projects Grid
+    function renderProjects(filter = 'all') {
+      const container = document.getElementById('projects-grid');
+      container.innerHTML = '';
+      
+      const filtered = filter === 'all' 
+        ? projects 
+        : projects.filter(p => p.category === filter);
+      
+      filtered.forEach(project => {
+        const card = document.createElement('div');
+        card.className = `project-card bg-white border border-[#f4f4f4] overflow-hidden cursor-pointer group`;
+        
+        const title = project.title[currentLang];
+        const location = project.location[currentLang];
+        const categoryLabel = filterLabels[project.category][currentLang];
+        
+        card.innerHTML = `
+          <div class="overflow-hidden aspect-[16/10]">
+            <img src="https://picsum.photos/id/${project.images[0]}/900/560" 
+                 class="editorial-bw w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" 
+                 alt="${title} — KONSTRU project">
+          </div>
+          <div class="px-6 py-5">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-semibold text-[17px] tracking-[-0.2px] leading-tight">${title}</h3>
+                <p class="text-[#555] text-sm mt-1.5">${location}</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="inline-block text-[10px] uppercase tracking-[2px] text-[#666] px-2.5 py-[1px] border border-[#e5e5e5]">${categoryLabel}</span>
+            </div>
+          </div>
+        `;
+        
+        card.addEventListener('click', () => openProjectModal(project));
+        container.appendChild(card);
+      });
+    }
+
+    // Update filter buttons text and active state
+    function updateFilters() {
+      const container = document.getElementById('project-filters');
+      const buttons = container.querySelectorAll('button');
+      
+      buttons.forEach(btn => {
+        const filter = btn.dataset.filter;
+        const label = filterLabels[filter][currentLang];
+        btn.textContent = label;
+        
+        if (filter === currentFilter) {
+          btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
+        } else {
+          btn.classList.remove('active', 'bg-black', 'text-white', 'border-black');
+        }
+      });
+    }
+
+    // Filter setup
+    function setupFilters() {
+      const container = document.getElementById('project-filters');
+      
+      container.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        
+        currentFilter = btn.dataset.filter;
+        
+        // Update active styles
+        container.querySelectorAll('button').forEach(b => {
+          if (b === btn) {
+            b.classList.add('active', 'bg-black', 'text-white', 'border-black');
+          } else {
+            b.classList.remove('active', 'bg-black', 'text-white', 'border-black');
+          }
+        });
+        
+        renderProjects(currentFilter);
+      });
+    }
+
+    // Render Articles
+    function renderArticles() {
+      const container = document.getElementById('articles-grid');
+      container.innerHTML = '';
+      
+      articles.forEach(article => {
+        const div = document.createElement('div');
+        div.className = `article-card bg-white border border-[#f4f4f4] p-7 cursor-pointer group`;
+        
+        const title = article.title[currentLang];
+        const excerpt = article.excerpt[currentLang];
+        
+        div.innerHTML = `
+          <div class="flex justify-between items-start mb-3">
+            <div class="uppercase text-[10px] tracking-[2.5px] text-[#666]">JOURNAL</div>
+          </div>
+          <h4 class="font-semibold text-[19px] leading-tight tracking-[-0.3px] mb-3 group-hover:underline decoration-1 underline-offset-4">${title}</h4>
+          <p class="text-[#444] text-[14.5px] leading-snug line-clamp-3">${excerpt}</p>
+          <div class="mt-5 text-xs tracking-widest text-black/70 group-hover:text-black transition">READ →</div>
+        `;
+        
+        div.addEventListener('click', () => openArticleModal(article));
+        container.appendChild(div);
+      });
+    }
+
+    // Open Project Modal
+    function openProjectModal(project) {
+      currentProject = project;
+      currentProjectImages = project.images;
+      currentImageIndex = 0;
+      
+      const modal = document.getElementById('project-modal');
+      const titleEl = document.getElementById('modal-project-title');
+      const locEl = document.getElementById('modal-project-location');
+      const descEl = document.getElementById('modal-project-desc');
+      const mainImg = document.getElementById('modal-main-image');
+      
+      // Populate bilingual content
+      titleEl.textContent = project.title[currentLang];
+      locEl.textContent = project.location[currentLang];
+      descEl.innerHTML = project.desc[currentLang];
+      
+      // Details
+      document.getElementById('modal-year').textContent = project.year;
+      document.getElementById('modal-size').textContent = project.size[currentLang];
+      document.getElementById('modal-duration').textContent = project.duration[currentLang];
+      document.getElementById('modal-location-detail').textContent = project.location[currentLang];
+      
+      // Main image
+      updateModalMainImage();
+      
+      // Thumbnails
+      renderThumbnails();
+      
+      // Show modal
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      
+      // Setup gallery controls
+      setupGalleryControls();
+    }
+
+    function updateModalMainImage() {
+      const mainImg = document.getElementById('modal-main-image');
+      const imgId = currentProjectImages[currentImageIndex];
+      mainImg.src = `https://picsum.photos/id/${imgId}/1400/920`;
+      mainImg.alt = `${currentProject.title[currentLang]} — image ${currentImageIndex + 1}`;
+      
+      // Update active thumb
+      document.querySelectorAll('#modal-thumbnails img').forEach((thumb, idx) => {
+        if (idx === currentImageIndex) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+    }
+    
+    function renderThumbnails() {
+      const container = document.getElementById('modal-thumbnails');
+      container.innerHTML = '';
+      
+      currentProjectImages.forEach((imgId, index) => {
+        const thumbWrap = document.createElement('div');
+        thumbWrap.className = `flex-shrink-0 w-[86px] h-[58px] overflow-hidden cursor-pointer gallery-thumb ${index === currentImageIndex ? 'active' : ''}`;
+        
+        const img = document.createElement('img');
+        img.src = `https://picsum.photos/id/${imgId}/240/160`;
+        img.className = 'w-full h-full object-cover editorial-bw';
+        img.alt = `Thumbnail ${index + 1}`;
+        
+        thumbWrap.appendChild(img);
+        thumbWrap.addEventListener('click', () => {
+          currentImageIndex = index;
+          updateModalMainImage();
+        });
+        
+        container.appendChild(thumbWrap);
+      });
+    }
+    
+    function setupGalleryControls() {
+      const prev = document.getElementById('gallery-prev');
+      const next = document.getElementById('gallery-next');
+      
+      prev.onclick = (e) => {
+        e.stopImmediatePropagation();
+        currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
+        updateModalMainImage();
+      };
+      
+      next.onclick = (e) => {
+        e.stopImmediatePropagation();
+        currentImageIndex = (currentImageIndex + 1) % currentProjectImages.length;
+        updateModalMainImage();
+      };
+      
+      // Keyboard support for gallery when modal is open
+      document.onkeydown = function handler(ev) {
+        if (!document.getElementById('project-modal').classList.contains('flex')) {
+          document.onkeydown = null;
+          return;
+        }
+        if (ev.key === 'ArrowLeft') {
+          currentImageIndex = (currentImageIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
+          updateModalMainImage();
+        } else if (ev.key === 'ArrowRight') {
+          currentImageIndex = (currentImageIndex + 1) % currentProjectImages.length;
+          updateModalMainImage();
+        } else if (ev.key === 'Escape') {
+          closeProjectModal();
+          document.onkeydown = null;
+        }
+      };
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      document.onkeydown = null;
+      currentProject = null;
+    }
+
+    // Open Article Modal
+    function openArticleModal(article) {
+      currentArticle = article;
+      
+      const modal = document.getElementById('article-modal');
+      const titleEl = document.getElementById('modal-article-title');
+      const contentEl = document.getElementById('modal-article-content');
+      
+      titleEl.textContent = article.title[currentLang];
+      contentEl.innerHTML = article.content[currentLang];
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      
+      // ESC support
+      document.onkeydown = function(ev) {
+        if (ev.key === 'Escape') {
+          closeArticleModal();
+          document.onkeydown = null;
+        }
+      };
+    }
+    
+    function closeArticleModal() {
+      const modal = document.getElementById('article-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      document.onkeydown = null;
+    }
+
+    // Setup Language Toggle
+    function setupLanguageToggle() {
+      // Desktop
+      const enBtn = document.getElementById('lang-en');
+      const esBtn = document.getElementById('lang-es');
+      
+      if (enBtn) enBtn.addEventListener('click', () => setLanguage('en'));
+      if (esBtn) esBtn.addEventListener('click', () => setLanguage('es'));
+      
+      // Mobile buttons
+      document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+          // Close mobile menu on lang change
+          document.getElementById('mobile-menu').classList.add('hidden');
+        });
+      });
+    }
+
+    // Setup Mobile Menu
+    function setupMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const closeBtn = document.getElementById('mobile-close-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (!mobileMenu.classList.contains('hidden')) {
+          icon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          icon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+      
+      closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.getElementById('menu-icon').classList.remove('hidden');
+        document.getElementById('close-icon').classList.add('hidden');
+      });
+      
+      // Close on nav link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          document.getElementById('menu-icon').classList.remove('hidden');
+          document.getElementById('close-icon').classList.add('hidden');
+        });
+      });
+    }
+
+    // Smooth scroll with navbar offset
+    function setupSmoothScroll() {
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          
+          if (target) {
+            e.preventDefault();
+            
+            const navHeight = document.getElementById('navbar').offsetHeight;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - navHeight + 4;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+
+    // Navbar scroll styling
+    function setupNavbarScroll() {
+      const navbar = document.getElementById('navbar');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          navbar.classList.add('nav-scrolled');
+        } else {
+          navbar.classList.remove('nav-scrolled');
+        }
+      });
+    }
+
+    // Setup contact form
+    function setupContactForm() {
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      const resetBtn = document.getElementById('reset-form-btn');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Very simple client-side validation is already handled by required attrs
+        // Show success state
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        
+        // Reset form for potential reuse
+        form.reset();
+      });
+      
+      resetBtn.addEventListener('click', () => {
+        success.classList.add('hidden');
+        form.classList.remove('hidden');
+      });
+    }
+
+    // Scroll-triggered fade-ins
+    function setupScrollAnimations() {
+      const elements = document.querySelectorAll('.project-card, .profile-card, .article-card, #projects .section-heading, #insights .section-heading');
+      
+      if (!('IntersectionObserver' in window)) {
+        // Fallback: reveal all
+        elements.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      
+      elements.forEach((el, index) => {
+        el.classList.add('fade-in');
+        // Stagger projects a little
+        if (el.classList.contains('project-card')) {
+          el.style.transitionDelay = `${Math.min(index * 40, 220)}ms`;
+        }
+        observer.observe(el);
+      });
+    }
+
+    // Initialize everything
+    function initialize() {
+      initTailwind();
+      
+      // Load saved language or default to en
+      const savedLang = localStorage.getItem('konstruLang');
+      currentLang = (savedLang === 'es' || savedLang === 'en') ? savedLang : 'en';
+      
+      // Initial renders
+      renderProjects('all');
+      renderArticles();
+      updateFilters();
+      
+      // Setup all interactions
+      setupFilters();
+      setupLanguageToggle();
+      setupMobileMenu();
+      setupSmoothScroll();
+      setupNavbarScroll();
+      setupContactForm();
+      setupScrollAnimations();
+      
+      // Apply initial language (updates static + dynamic)
+      setLanguage(currentLang);
+      
+      // Make sure filters display correct language labels right away
+      updateFilters();
+      
+      // Keyboard: close modals globally
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const proj = document.getElementById('project-modal');
+          const art = document.getElementById('article-modal');
+          
+          if (!proj.classList.contains('hidden') && proj.classList.contains('flex')) {
+            closeProjectModal();
+          } else if (!art.classList.contains('hidden') && art.classList.contains('flex')) {
+            closeArticleModal();
+          }
+        }
+      });
+      
+      // Accessibility: focus first focusable in modals (basic)
+      const projectModal = document.getElementById('project-modal');
+      projectModal.addEventListener('transitionend', () => {
+        // Could focus close button here, but keeping light
+      });
+      
+      // Mark body ready
+      document.documentElement.classList.add('js-loaded');
+      
+      // Bonus: pre-load a few images for buttery feel
+      const preloadIds = ['160', '201', '1015', '133'];
+      preloadIds.forEach(id => {
+        const i = new Image();
+        i.src = `https://picsum.photos/id/${id}/800/600`;
+      });
+      
+      // Final safety: ensure language buttons reflect state
+      setTimeout(updateLangButtons, 40);
+    }
+
+    // Boot
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+      initialize();
+    }
+  </script>
+</body>
+</html>
+<!-- 
+To deploy: Save as index.html → New GitHub repo → Enable GitHub Pages (deploy from main branch).
+-->
