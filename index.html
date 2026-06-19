@@ -1,214 +1,384 @@
-<!-- KONSTRU - Images Upgraded (Real built projects, Spain / UK / Latin America) -->
+<!-- konstru. — B&W design system + Signal Orange accent -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="KONSTRU builds extraordinary, timeless projects: luxury hotels, world-class equestrian stables &amp; estates, and complex, beautiful large-scale architecture.">
-  <title>KONSTRU | Timeless Construction</title>
+  <title>konstru. | Timeless Construction</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Inter:wght@700&amp;display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap');
+
     :root {
-      --k-black: #000000;
-      --k-white: #ffffff;
+      --ink: #0A0A0A;
+      --paper: #FFFFFF;
+      --offwhite: #FAFAFA;
+      --concrete: #F3F2F0;
+      --hairline: #E3E2DF;
+      --muted: #8A8A87;
+      --secondary: #5A5A57;
+      --accent: #FF5126;
+      --accent-ink: #FFFFFF;
     }
-    
+
     html {
       scroll-behavior: smooth;
     }
-    
+
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Sora', system-ui, sans-serif;
+      font-weight: 400;
+      color: var(--secondary);
+      background-color: var(--concrete);
     }
-    
+
+    .text-ink { color: var(--ink); }
+    .text-secondary { color: var(--secondary); }
+    .text-muted { color: var(--muted); }
+    .bg-paper { background-color: var(--paper); }
+    .bg-offwhite { background-color: var(--offwhite); }
+    .bg-concrete { background-color: var(--concrete); }
+    .border-hairline { border-color: var(--hairline); }
+
+    .heading-display {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .section-heading {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+    }
+
+    .label-mono {
+      font-family: 'Space Mono', monospace;
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .label-mono-bold {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background-color: var(--accent);
+      color: var(--accent-ink);
+      border: 1px solid var(--accent);
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    .status-tag {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background-color: var(--accent);
+      color: var(--accent-ink);
+      padding: 0.2rem 0.625rem;
+    }
+
+    .accent-link {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
+
+    .accent-link:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .brand-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem;
+      min-width: 120px;
+    }
+
+    .brand-logo {
+      height: 1.75rem;
+      width: auto;
+      min-width: 120px;
+      display: block;
+    }
+
+    .brand-logo-hero {
+      height: clamp(3.5rem, 10vw, 5.5rem);
+      width: auto;
+      min-width: 120px;
+      margin-inline: auto;
+      display: block;
+    }
+
     .editorial-bw {
       filter: grayscale(0.88) contrast(1.12) brightness(0.96);
       transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .project-card:hover .editorial-bw {
       filter: grayscale(0.82) contrast(1.15) brightness(0.98);
     }
-    
+
     .project-card {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: var(--paper);
+      border: 1px solid var(--hairline);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
     }
-    
+
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+      transform: translateY(-4px);
+      border-color: var(--ink);
     }
-    
-    .section-heading {
-      font-size: clamp(2.25rem, 5vw, 3.25rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      font-weight: 700;
-    }
-    
+
     .nav-link {
       position: relative;
+      font-family: 'Sora', sans-serif;
+      font-weight: 500;
+      color: var(--muted);
       transition: color 0.2s ease;
     }
-    
-    .nav-link:after {
+
+    .nav-link:hover {
+      color: var(--ink);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .nav-link.active::after {
+      display: none;
+    }
+
+    .nav-link:not(.active)::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -3px;
       left: 0;
       width: 0;
       height: 1px;
-      background-color: #000000;
+      background-color: var(--ink);
       transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
-    .nav-link:hover:after {
+
+    .nav-link:not(.active):hover::after {
       width: 100%;
     }
-    
+
+    .mobile-nav-link {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav-link.active {
+      color: var(--accent);
+    }
+
     .filter-btn {
-      font-size: 0.75rem;
-      letter-spacing: 0.125em;
+      font-family: 'Space Mono', monospace;
+      font-weight: 400;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       padding: 0.5rem 1.25rem;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--muted);
+      border: 1px solid var(--hairline);
+      background: transparent;
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
-    
-    .filter-btn.active {
-      background-color: #000000;
-      color: #ffffff;
-      border-color: #000000;
+
+    .filter-btn:hover {
+      color: var(--ink);
+      border-color: var(--ink);
     }
-    
+
+    .filter-btn.active {
+      background-color: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
     .modal {
       animation: modalEnter 0.2s cubic-bezier(0.32, 0.72, 0, 1);
     }
-    
+
     @keyframes modalEnter {
-      from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.985);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(12px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    
+
     .fade-in {
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     .article-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: var(--paper);
+      border: 1px solid var(--hairline);
+      transition: transform 0.3s ease, border-color 0.2s ease;
     }
-    
+
     .article-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
+      border-color: var(--ink);
     }
-    
+
+    .article-card h4:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
     .profile-card {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: var(--paper);
+      border: 1px solid var(--hairline);
+      transition: transform 0.35s ease, border-color 0.2s ease;
     }
-    
+
     .profile-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
+      border-color: var(--ink);
     }
-    
+
     .luxury-input {
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      color: var(--ink);
+      border: 1px solid var(--hairline);
+      background-color: var(--paper);
+      transition: border-color 0.2s ease;
     }
-    
+
+    .luxury-input::placeholder {
+      color: var(--muted);
+    }
+
     .luxury-input:focus {
-      border-color: #000000;
-      box-shadow: 0 0 0 1px #000000;
+      border-color: var(--ink);
       outline: none;
     }
-    
+
     .scroll-indicator {
       animation: bounce 2s infinite;
     }
-    
+
     .lang-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
       transition: all 0.2s ease;
     }
-    
+
     .lang-btn.active {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: var(--ink);
+      color: var(--paper);
     }
-    
+
     .gallery-thumb {
       transition: all 0.2s ease;
-      border: 2px solid transparent;
+      border: 1px solid transparent;
     }
-    
+
     .gallery-thumb.active {
-      border-color: #000000;
+      border-color: var(--ink);
       opacity: 1;
     }
-    
+
     .gallery-thumb:hover {
       opacity: 0.85;
     }
-    
+
     .nav-scrolled {
-      box-shadow: 0 1px 0 0 #f4f4f4;
+      box-shadow: 0 1px 0 0 var(--hairline);
     }
-    
-    .stat {
-      font-feature-settings: "tnum";
-    }
-    
+
     .premium-text {
       font-size: 1.05rem;
       line-height: 1.65;
+      color: var(--secondary);
+    }
+
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.55) 0%,
+        rgba(10, 10, 10, 0.35) 45%,
+        rgba(10, 10, 10, 0.6) 100%
+      );
+    }
+
+    .hero-tagline {
+      font-family: 'Sora', sans-serif;
+      font-weight: 400;
+      color: var(--paper);
+      opacity: 0.92;
     }
   </style>
 </head>
-<body class="bg-[#f8f8f8] text-[#111111] antialiased">
+<body class="bg-concrete antialiased">
   <!-- Fixed Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#f4f4f4]">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-paper border-b border-hairline">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="#" class="text-3xl font-bold tracking-[-1.5px] text-black">KONSTRU</a>
+        <a href="#" class="brand-logo-wrap" aria-label="konstru.">
+          <svg class="brand-logo" viewBox="0 0 420 87" role="img" aria-hidden="true">
+            <g fill="var(--ink)" font-family="Sora,sans-serif" font-weight="700" font-size="100">
+              <text x="6" y="79">k</text><text x="67.4" y="79">o</text><text x="130.9" y="79">n</text><text x="193.6" y="79">s</text><text x="246.7" y="79">t</text>
+              <g transform="translate(614.8,0) scale(-1,1)"><text x="287.6" y="79">r</text></g>
+              <text x="327.2" y="79">u</text>
+            </g>
+            <text x="389.2" y="79" fill="var(--accent)" font-family="Sora,sans-serif" font-weight="700" font-size="100">.</text>
+          </svg>
+        </a>
       </div>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-x-9 text-sm">
-        <a href="#projects" class="nav-link text-[#111111] font-medium" data-i18n="nav.projects">Projects</a>
-        <a href="#about" class="nav-link text-[#111111] font-medium" data-i18n="nav.about">About</a>
-        <a href="#insights" class="nav-link text-[#111111] font-medium" data-i18n="nav.insights">Insights</a>
-        <a href="#contact" class="nav-link text-[#111111] font-medium" data-i18n="nav.contact">Contact</a>
+        <a href="#projects" class="nav-link" data-section="projects" data-i18n="nav.projects">Projects</a>
+        <a href="#about" class="nav-link" data-section="about" data-i18n="nav.about">About</a>
+        <a href="#insights" class="nav-link" data-section="insights" data-i18n="nav.insights">Insights</a>
+        <a href="#contact" class="nav-link" data-section="contact" data-i18n="nav.contact">Contact</a>
       </div>
 
       <!-- Language Toggle + Mobile -->
       <div class="flex items-center gap-x-4">
         <!-- Language Toggle Desktop -->
-        <div class="hidden md:flex items-center rounded-full border border-[#e5e5e5] overflow-hidden text-xs font-medium">
-          <button id="lang-en" 
-                  class="lang-btn px-4 py-[7px] text-[#111111]" 
-                  data-lang="en">EN</button>
-          <button id="lang-es" 
-                  class="lang-btn px-4 py-[7px] text-[#111111]" 
-                  data-lang="es">ES</button>
+        <div class="hidden md:flex items-center border border-hairline overflow-hidden">
+          <button id="lang-en" class="lang-btn px-4 py-[7px]" data-lang="en">EN</button>
+          <button id="lang-es" class="lang-btn px-4 py-[7px]" data-lang="es">ES</button>
         </div>
 
         <!-- Hamburger -->
         <button id="mobile-menu-btn"
-                class="md:hidden w-10 h-10 flex items-center justify-center text-black"
+                class="md:hidden w-10 h-10 flex items-center justify-center text-ink"
                 aria-label="Open menu">
           <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -222,11 +392,20 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60] bg-white">
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60] bg-paper">
     <div class="flex flex-col h-full">
-      <div class="h-20 flex items-center justify-between px-6 border-b border-[#f4f4f4]">
-        <div class="text-3xl font-bold tracking-[-1.5px] text-black">KONSTRU</div>
-        <button id="mobile-close-btn" class="w-10 h-10 flex items-center justify-center" aria-label="Close menu">
+      <div class="h-20 flex items-center justify-between px-6 border-b border-hairline">
+        <div class="brand-logo-wrap">
+          <svg class="brand-logo" viewBox="0 0 420 87" role="img" aria-label="konstru.">
+            <g fill="var(--ink)" font-family="Sora,sans-serif" font-weight="700" font-size="100">
+              <text x="6" y="79">k</text><text x="67.4" y="79">o</text><text x="130.9" y="79">n</text><text x="193.6" y="79">s</text><text x="246.7" y="79">t</text>
+              <g transform="translate(614.8,0) scale(-1,1)"><text x="287.6" y="79">r</text></g>
+              <text x="327.2" y="79">u</text>
+            </g>
+            <text x="389.2" y="79" fill="var(--accent)" font-family="Sora,sans-serif" font-weight="700" font-size="100">.</text>
+          </svg>
+        </div>
+        <button id="mobile-close-btn" class="w-10 h-10 flex items-center justify-center text-ink" aria-label="Close menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -234,19 +413,19 @@
       </div>
       
       <div class="flex-1 flex flex-col px-6 pt-8 text-lg font-medium">
-        <a href="#projects" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.projects">Projects</a>
-        <a href="#about" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.about">About</a>
-        <a href="#insights" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.insights">Insights</a>
-        <a href="#contact" class="mobile-nav-link py-4 border-b border-[#f4f4f4]" data-i18n="nav.contact">Contact</a>
+        <a href="#projects" class="mobile-nav-link py-4 border-b border-hairline" data-section="projects" data-i18n="nav.projects">Projects</a>
+        <a href="#about" class="mobile-nav-link py-4 border-b border-hairline" data-section="about" data-i18n="nav.about">About</a>
+        <a href="#insights" class="mobile-nav-link py-4 border-b border-hairline" data-section="insights" data-i18n="nav.insights">Insights</a>
+        <a href="#contact" class="mobile-nav-link py-4 border-b border-hairline" data-section="contact" data-i18n="nav.contact">Contact</a>
       </div>
 
       <div class="px-6 pb-10">
         <!-- Language Toggle Mobile -->
-        <div class="flex items-center rounded-full border border-[#e5e5e5] overflow-hidden text-sm font-medium w-fit">
-          <button class="mobile-lang-btn px-5 py-2.5 text-[#111111]" data-lang="en">EN</button>
-          <button class="mobile-lang-btn px-5 py-2.5 text-[#111111]" data-lang="es">ES</button>
+        <div class="flex items-center border border-hairline overflow-hidden w-fit">
+          <button class="mobile-lang-btn lang-btn px-5 py-2.5" data-lang="en">EN</button>
+          <button class="mobile-lang-btn lang-btn px-5 py-2.5" data-lang="es">ES</button>
         </div>
-        <div class="mt-8 text-xs text-[#666]">© KONSTRU</div>
+        <div class="mt-8 label-mono">© konstru.</div>
       </div>
     </div>
   </div>
@@ -258,23 +437,31 @@
          class="absolute inset-0 bg-cover bg-center editorial-bw"
          style="background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=2400&h=1600&q=85')"></div>
     
-    <!-- Subtle overlay for drama and legibility -->
-    <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/25 to-white/70"></div>
+    <!-- Ink overlay for legibility on photography -->
+    <div class="absolute inset-0 hero-overlay"></div>
     
     <div class="relative z-10 px-6 text-center max-w-5xl">
-      <h1 class="text-[4.25rem] md:text-[6.25rem] lg:text-[7.25rem] font-bold tracking-[-4.5px] leading-[0.92] text-black">
-        KONSTRU
-      </h1>
-      <p class="mt-5 text-xl md:text-2xl tracking-[-0.2px] text-[#1a1a1a] max-w-md mx-auto" data-i18n="hero.tagline">
+      <h1 class="sr-only">konstru.</h1>
+      <div class="brand-logo-wrap justify-center">
+        <svg class="brand-logo-hero" viewBox="0 0 420 87" role="img" aria-hidden="true">
+          <g fill="var(--paper)" font-family="Sora,sans-serif" font-weight="700" font-size="100">
+            <text x="6" y="79">k</text><text x="67.4" y="79">o</text><text x="130.9" y="79">n</text><text x="193.6" y="79">s</text><text x="246.7" y="79">t</text>
+            <g transform="translate(614.8,0) scale(-1,1)"><text x="287.6" y="79">r</text></g>
+            <text x="327.2" y="79">u</text>
+          </g>
+          <text x="389.2" y="79" fill="var(--accent)" font-family="Sora,sans-serif" font-weight="700" font-size="100">.</text>
+        </svg>
+      </div>
+      <p class="mt-8 text-xl md:text-2xl tracking-[-0.2px] hero-tagline max-w-md mx-auto" data-i18n="hero.tagline">
         Timeless construction. Uncompromising excellence.
       </p>
     </div>
 
     <!-- Scroll indicator -->
     <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-      <div class="text-[10px] tracking-[3px] text-[#666] mb-1.5 font-medium">SCROLL</div>
+      <div class="label-mono mb-1.5" style="color: var(--paper); opacity: 0.7;">Scroll</div>
       <div class="scroll-indicator">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" style="color: var(--paper); opacity: 0.7;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
@@ -282,17 +469,17 @@
   </header>
 
   <!-- Projects Section -->
-  <section id="projects" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4 mb-10">
-      <h2 class="section-heading text-black" data-i18n="projects.heading">Selected Works</h2>
+  <section id="projects" class="max-w-7xl mx-auto px-6 pt-24 pb-28">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-6 mb-12">
+      <h2 class="section-heading heading-display" data-i18n="projects.heading">Selected Works</h2>
       
       <!-- Filters -->
       <div id="project-filters" class="flex flex-wrap gap-2">
-        <button class="filter-btn border border-[#e5e5e5] text-black active" data-filter="all">All</button>
-        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="stables">Stables</button>
-        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="hotels">Hotels</button>
-        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="residences">Residences</button>
-        <button class="filter-btn border border-[#e5e5e5] text-black" data-filter="landmarks">Landmarks</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="stables">Stables</button>
+        <button class="filter-btn" data-filter="hotels">Hotels</button>
+        <button class="filter-btn" data-filter="residences">Residences</button>
+        <button class="filter-btn" data-filter="landmarks">Landmarks</button>
       </div>
     </div>
 
@@ -303,65 +490,65 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="bg-white py-20 border-t border-[#f4f4f4]">
+  <section id="about" class="bg-offwhite py-24 border-t border-hairline">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-4xl mx-auto text-center mb-16">
-        <p class="text-[1.35rem] md:text-3xl leading-tight tracking-[-0.6px] font-semibold text-black" data-i18n="about.philosophy">
+      <div class="max-w-4xl mx-auto text-center mb-20">
+        <p class="text-[1.35rem] md:text-3xl leading-tight tracking-[-0.6px] font-bold text-ink" style="font-family: 'Sora', sans-serif;" data-i18n="about.philosophy">
           We exist to build legacies — projects of such quiet power and enduring craft that they become part of the land and the story of those who commission them. We move with speed because we move with certainty. We earn trust because we never compromise it.
         </p>
       </div>
 
-      <div class="mb-8">
-        <h3 class="text-center text-sm tracking-[3px] font-medium text-[#666]" data-i18n="about.leadership">THE LEADERSHIP</h3>
+      <div class="mb-10">
+        <h3 class="text-center label-mono" data-i18n="about.leadership">The Leadership</h3>
       </div>
 
       <!-- Leadership Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         <!-- Jesus -->
-        <div class="profile-card bg-[#f8f8f8] p-8">
-          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+        <div class="profile-card p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full border border-hairline">
             <img src="https://picsum.photos/id/1005/400/400" class="editorial-bw w-full h-full object-cover" alt="Jesus — Head of Construction">
           </div>
           <div>
-            <div class="font-bold text-2xl tracking-tight">Jesus</div>
-            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.jesus.role">Head of Construction</div>
+            <div class="font-bold text-2xl tracking-tight text-ink" style="font-family: 'Sora', sans-serif;">Jesus</div>
+            <div class="label-mono mt-2" data-i18n="about.jesus.role">Head of Construction</div>
           </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.jesus.bio">
+          <p class="mt-5 text-[15px] leading-relaxed text-secondary" data-i18n="about.jesus.bio">
             Master builder with more than thirty years leading complex projects across the Americas. Jesus is on site from groundbreaking to final walkthrough. His standard is uncompromising: if it is not perfect, it is not finished.
           </p>
         </div>
 
         <!-- Leandro -->
-        <div class="profile-card bg-[#f8f8f8] p-8">
-          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+        <div class="profile-card p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full border border-hairline">
             <img src="https://picsum.photos/id/1009/400/400" class="editorial-bw w-full h-full object-cover" alt="Leandro — Head of Commercial">
           </div>
           <div>
-            <div class="font-bold text-2xl tracking-tight">Leandro</div>
-            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.leandro.role">Head of Commercial</div>
+            <div class="font-bold text-2xl tracking-tight text-ink" style="font-family: 'Sora', sans-serif;">Leandro</div>
+            <div class="label-mono mt-2" data-i18n="about.leandro.role">Head of Commercial</div>
           </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.leandro.bio">
+          <p class="mt-5 text-[15px] leading-relaxed text-secondary" data-i18n="about.leandro.bio">
             He bridges vision and execution. Leandro ensures that every decision protects the client’s investment, timeline, and original intent. He is the guardian of clarity in a world of ambiguity.
           </p>
         </div>
 
         <!-- Luke -->
-        <div class="profile-card bg-[#f8f8f8] p-8">
-          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full ring-1 ring-black/5">
+        <div class="profile-card p-8">
+          <div class="w-20 h-20 mb-7 overflow-hidden rounded-full border border-hairline">
             <img src="https://picsum.photos/id/64/400/400" class="editorial-bw w-full h-full object-cover" alt="Luke — Head of Strategy">
           </div>
           <div>
-            <div class="font-bold text-2xl tracking-tight">Luke</div>
-            <div class="text-sm text-[#666] mt-px tracking-[0.5px]" data-i18n="about.luke.role">Head of Strategy</div>
+            <div class="font-bold text-2xl tracking-tight text-ink" style="font-family: 'Sora', sans-serif;">Luke</div>
+            <div class="label-mono mt-2" data-i18n="about.luke.role">Head of Strategy</div>
           </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-[#1a1a1a]" data-i18n="about.luke.bio">
+          <p class="mt-5 text-[15px] leading-relaxed text-secondary" data-i18n="about.luke.bio">
             Luke orchestrates the invisible: schedules, supply chains, risk, and contingency. His rigor creates the conditions for beauty to emerge on time and without surprise.
           </p>
         </div>
       </div>
 
-      <div class="max-w-2xl mx-auto mt-14 text-center">
-        <p class="text-base text-[#333]" data-i18n="about.closing">
+      <div class="max-w-2xl mx-auto mt-16 text-center">
+        <p class="text-base text-secondary" data-i18n="about.closing">
           Their distinct strengths — on-the-ground mastery, client advocacy, and strategic precision — form an unmatched partnership for delivering extraordinary projects with certainty and grace.
         </p>
       </div>
@@ -369,9 +556,9 @@
   </section>
 
   <!-- Insights / Journal -->
-  <section id="insights" class="max-w-7xl mx-auto px-6 py-20">
-    <div class="flex items-end justify-between mb-9">
-      <h2 class="section-heading text-black" data-i18n="insights.heading">Journal</h2>
+  <section id="insights" class="max-w-7xl mx-auto px-6 py-24">
+    <div class="flex items-end justify-between mb-12">
+      <h2 class="section-heading heading-display" data-i18n="insights.heading">Journal</h2>
     </div>
 
     <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -380,10 +567,10 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="bg-white border-t border-[#f4f4f4] py-20">
+  <section id="contact" class="bg-paper border-t border-hairline py-24">
     <div class="max-w-2xl mx-auto px-6">
-      <div class="text-center mb-11">
-        <h2 class="text-[2.5rem] md:text-[3rem] font-bold tracking-[-1.5px] leading-none text-black" data-i18n="contact.heading">
+      <div class="text-center mb-14">
+        <h2 class="text-[2.5rem] md:text-[3rem] heading-display tracking-[-1.5px] leading-none" data-i18n="contact.heading">
           Ready to build something extraordinary?
         </h2>
       </div>
@@ -392,23 +579,23 @@
       <form id="contact-form" class="space-y-5">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label for="name" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.name">NAME</label>
+            <label for="name" class="block label-mono mb-2" data-i18n="contact.name">Name</label>
             <input type="text" id="name" name="name" required 
-                   class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] placeholder:text-[#888]" 
+                   class="luxury-input w-full px-5 py-3.5 text-[15px]" 
                    placeholder="Alex Rivera">
           </div>
           <div>
-            <label for="email" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.email">EMAIL</label>
+            <label for="email" class="block label-mono mb-2" data-i18n="contact.email">Email</label>
             <input type="email" id="email" name="email" required 
-                   class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] placeholder:text-[#888]" 
+                   class="luxury-input w-full px-5 py-3.5 text-[15px]" 
                    placeholder="you@domain.com">
           </div>
         </div>
 
         <div>
-          <label for="project-type" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.projectType">PROJECT TYPE (OPTIONAL)</label>
+          <label for="project-type" class="block label-mono mb-2" data-i18n="contact.projectType">Project Type (Optional)</label>
           <select id="project-type" name="project-type" 
-                  class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-3.5 text-[15px] text-[#111]">
+                  class="luxury-input w-full px-5 py-3.5 text-[15px] text-ink">
             <option value="" data-i18n="contact.select">Select a category</option>
             <option value="stables" data-i18n="filters.stables">Stables</option>
             <option value="hotels" data-i18n="filters.hotels">Hotels</option>
@@ -419,65 +606,64 @@
         </div>
 
         <div>
-          <label for="message" class="block text-xs tracking-[1.5px] text-[#666] mb-1.5" data-i18n="contact.message">MESSAGE</label>
+          <label for="message" class="block label-mono mb-2" data-i18n="contact.message">Message</label>
           <textarea id="message" name="message" rows="5" required 
-                    class="luxury-input w-full border border-[#e5e5e5] bg-white px-5 py-4 text-[15px] resize-y min-h-[120px] placeholder:text-[#888]"
+                    class="luxury-input w-full px-5 py-4 text-[15px] resize-y min-h-[120px]"
                     placeholder="Tell us about the project..."></textarea>
         </div>
 
-        <div class="pt-2">
-          <button type="submit" 
-                  class="w-full md:w-auto px-12 py-4 bg-black hover:bg-[#1a1a1a] transition-colors text-white text-sm tracking-[1.5px] font-medium">
-            <span data-i18n="contact.submit">SEND INQUIRY</span>
+        <div class="pt-3">
+          <button type="submit" class="btn-primary w-full md:w-auto px-12 py-4">
+            <span data-i18n="contact.submit">Send Inquiry</span>
           </button>
         </div>
       </form>
 
       <!-- Success State -->
-      <div id="form-success" class="hidden bg-[#f8f8f8] border border-[#e5e5e5] p-9 text-center">
-        <div class="mx-auto w-10 h-10 rounded-full bg-black flex items-center justify-center mb-5">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div id="form-success" class="hidden bg-offwhite border border-hairline p-10 text-center">
+        <div class="mx-auto w-10 h-10 flex items-center justify-center mb-5 border border-ink text-ink">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7" />
           </svg>
         </div>
-        <h4 class="font-semibold text-xl tracking-tight" data-i18n="contact.successTitle">Thank you.</h4>
-        <p class="mt-3 text-[#444] text-[15px] max-w-xs mx-auto" data-i18n="contact.successBody">
+        <h4 class="font-bold text-xl tracking-tight text-ink" style="font-family: 'Sora', sans-serif;" data-i18n="contact.successTitle">Thank you.</h4>
+        <p class="mt-3 text-secondary text-[15px] max-w-xs mx-auto" data-i18n="contact.successBody">
           Your message has been received. A member of the KONSTRU team will contact you within 48 hours.
         </p>
         <button id="reset-form-btn"
-                class="mt-7 text-xs tracking-[2px] border-b border-black pb-px hover:text-[#444]" data-i18n="contact.sendAnother">
-          SEND ANOTHER MESSAGE
+                class="mt-8 label-mono-bold text-ink border-b border-ink pb-px hover:text-secondary" data-i18n="contact.sendAnother">
+          Send Another Message
         </button>
       </div>
 
-      <div class="text-center mt-10">
-        <a href="mailto:hello@konstru.com" class="text-sm font-medium underline decoration-1 underline-offset-4 hover:decoration-2">hello@konstru.com</a>
-        <span class="mx-2.5 text-[#e5e5e5]">·</span>
-        <span class="text-sm text-[#555]" data-i18n="contact.worldwide">We work worldwide.</span>
+      <div class="text-center mt-12">
+        <a href="mailto:hello@konstru.com" class="text-sm font-medium accent-link">hello@konstru.com</a>
+        <span class="mx-2.5 text-muted">·</span>
+        <span class="text-sm text-secondary" data-i18n="contact.worldwide">We work worldwide.</span>
       </div>
     </div>
   </section>
 
   <!-- Minimal Footer -->
-  <footer class="border-t border-[#f4f4f4] bg-white py-8">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-y-2 text-xs text-[#666]">
-      <div>© <span data-i18n="footer.year">2026</span> KONSTRU. All rights reserved.</div>
-      <div class="tracking-widest">EST. 2012</div>
+  <footer class="border-t border-hairline bg-paper py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-y-2 label-mono">
+      <div>© <span data-i18n="footer.year">2026</span> konstru. All rights reserved.</div>
+      <div>Est. 2012</div>
     </div>
   </footer>
 
   <!-- Project Modal -->
-  <div id="project-modal" class="hidden fixed inset-0 z-[70] items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-8">
+  <div id="project-modal" class="hidden fixed inset-0 z-[70] items-center justify-center p-4 md:p-8" style="background: rgba(10, 10, 10, 0.72);">
     <div onclick="event.target.id === 'project-modal' && closeProjectModal()" class="absolute inset-0"></div>
     
-    <div class="modal relative bg-white w-full max-w-5xl max-h-[92vh] overflow-hidden shadow-2xl flex flex-col">
+    <div class="modal relative bg-paper w-full max-w-5xl max-h-[92vh] overflow-hidden border border-hairline flex flex-col">
       <!-- Modal Header -->
-      <div class="flex items-center justify-between px-7 pt-6 pb-4 border-b border-[#f4f4f4]">
+      <div class="flex items-center justify-between px-8 pt-7 pb-5 border-b border-hairline">
         <div>
-          <div id="modal-project-title" class="font-bold text-3xl tracking-[-1px]"></div>
-          <div id="modal-project-location" class="text-sm text-[#666] mt-0.5"></div>
+          <div id="modal-project-title" class="heading-display text-3xl tracking-[-1px]"></div>
+          <div id="modal-project-location" class="label-mono mt-1"></div>
         </div>
-        <button onclick="closeProjectModal()" class="w-9 h-9 flex items-center justify-center text-[#666] hover:text-black" aria-label="Close">
+        <button onclick="closeProjectModal()" class="w-9 h-9 flex items-center justify-center text-muted hover:text-ink" aria-label="Close">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.75" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -486,19 +672,19 @@
 
       <div class="flex-1 overflow-y-auto">
         <!-- Gallery -->
-        <div class="relative bg-[#f8f8f8]">
+        <div class="relative bg-offwhite">
           <div class="aspect-[16/10] w-full overflow-hidden">
             <img id="modal-main-image" class="w-full h-full object-cover editorial-bw" alt="">
           </div>
           
           <!-- Gallery Controls -->
-          <div class="absolute bottom-4 right-4 flex gap-2 bg-white/95 px-2 py-1.5 rounded">
-            <button id="gallery-prev" class="w-8 h-8 flex items-center justify-center border border-[#e5e5e5] hover:bg-[#f4f4f4] transition" aria-label="Previous image">
+          <div class="absolute bottom-4 right-4 flex gap-2 bg-paper px-2 py-1.5 border border-hairline">
+            <button id="gallery-prev" class="w-8 h-8 flex items-center justify-center border border-hairline hover:bg-offwhite transition text-ink" aria-label="Previous image">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button id="gallery-next" class="w-8 h-8 flex items-center justify-center border border-[#e5e5e5] hover:bg-[#f4f4f4] transition" aria-label="Next image">
+            <button id="gallery-next" class="w-8 h-8 flex items-center justify-center border border-hairline hover:bg-offwhite transition text-ink" aria-label="Next image">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
               </svg>
@@ -507,35 +693,35 @@
         </div>
 
         <!-- Thumbnails -->
-        <div id="modal-thumbnails" class="flex gap-3 px-7 pt-4 pb-5 bg-white overflow-x-auto"></div>
+        <div id="modal-thumbnails" class="flex gap-3 px-8 pt-4 pb-5 bg-paper overflow-x-auto"></div>
 
         <!-- Content -->
-        <div class="px-7 pb-9 pt-1 grid md:grid-cols-5 gap-x-8 gap-y-8">
+        <div class="px-8 pb-10 pt-2 grid md:grid-cols-5 gap-x-10 gap-y-8">
           <!-- Description -->
           <div class="md:col-span-3">
-            <div class="uppercase text-xs tracking-[2px] text-[#666] mb-3" data-i18n="modal.projectDetails">THE PROJECT</div>
-            <div id="modal-project-desc" class="premium-text text-[#1a1a1a] leading-relaxed"></div>
+            <div class="label-mono mb-4" data-i18n="modal.projectDetails">The Project</div>
+            <div id="modal-project-desc" class="premium-text leading-relaxed"></div>
           </div>
 
           <!-- Details -->
           <div class="md:col-span-2">
-            <div class="uppercase text-xs tracking-[2px] text-[#666] mb-4" data-i18n="modal.keyDetails">KEY DETAILS</div>
+            <div class="label-mono mb-5" data-i18n="modal.keyDetails">Key Details</div>
             <div class="space-y-3 text-sm">
-              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
-                <span class="text-[#666]" data-i18n="modal.year">Year</span>
-                <span id="modal-year" class="font-medium"></span>
+              <div class="flex justify-between border-b border-hairline pb-3">
+                <span class="label-mono" data-i18n="modal.year">Year</span>
+                <span id="modal-year" class="font-medium text-ink"></span>
               </div>
-              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
-                <span class="text-[#666]" data-i18n="modal.size">Size</span>
-                <span id="modal-size" class="font-medium"></span>
+              <div class="flex justify-between border-b border-hairline pb-3">
+                <span class="label-mono" data-i18n="modal.size">Size</span>
+                <span id="modal-size" class="font-medium text-ink"></span>
               </div>
-              <div class="flex justify-between border-b border-[#f4f4f4] pb-3">
-                <span class="text-[#666]" data-i18n="modal.duration">Duration</span>
-                <span id="modal-duration" class="font-medium"></span>
+              <div class="flex justify-between border-b border-hairline pb-3">
+                <span class="label-mono" data-i18n="modal.duration">Duration</span>
+                <span id="modal-duration" class="font-medium text-ink"></span>
               </div>
               <div class="flex justify-between">
-                <span class="text-[#666]" data-i18n="modal.location">Location</span>
-                <span id="modal-location-detail" class="font-medium"></span>
+                <span class="label-mono" data-i18n="modal.location">Location</span>
+                <span id="modal-location-detail" class="font-medium text-ink"></span>
               </div>
             </div>
           </div>
@@ -545,25 +731,25 @@
   </div>
 
   <!-- Article Modal -->
-  <div id="article-modal" class="hidden fixed inset-0 z-[70] items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-8">
+  <div id="article-modal" class="hidden fixed inset-0 z-[70] items-center justify-center p-4 md:p-8" style="background: rgba(10, 10, 10, 0.72);">
     <div onclick="event.target.id === 'article-modal' && closeArticleModal()" class="absolute inset-0"></div>
     
-    <div class="modal relative bg-white w-full max-w-2xl shadow-2xl overflow-hidden">
+    <div class="modal relative bg-paper w-full max-w-2xl border border-hairline overflow-hidden">
       <div class="px-8 pt-8 pb-6">
         <div class="flex justify-between items-start">
-          <div id="modal-article-title" class="font-bold text-[28px] leading-[1.05] tracking-[-1px] pr-8"></div>
-          <button onclick="closeArticleModal()" class="w-9 h-9 flex-shrink-0 flex items-center justify-center text-[#666] hover:text-black -mt-1 -mr-1" aria-label="Close">
+          <div id="modal-article-title" class="heading-display text-[28px] leading-[1.05] tracking-[-1px] pr-8"></div>
+          <button onclick="closeArticleModal()" class="w-9 h-9 flex-shrink-0 flex items-center justify-center text-muted hover:text-ink -mt-1 -mr-1" aria-label="Close">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.75" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
         
-        <div class="mt-7 text-[15px] leading-relaxed text-[#1a1a1a]" id="modal-article-content"></div>
+        <div class="mt-7 text-[15px] leading-relaxed text-secondary" id="modal-article-content"></div>
       </div>
       
-      <div class="border-t border-[#f4f4f4] px-8 py-4 bg-[#f8f8f8]">
-        <div class="text-xs text-[#666] tracking-widest" data-i18n="modal.journal">KONSTRU JOURNAL</div>
+      <div class="border-t border-hairline px-8 py-4 bg-offwhite">
+        <div class="label-mono" data-i18n="modal.journal">konstru. Journal</div>
       </div>
     </div>
   </div>
@@ -575,7 +761,18 @@
         theme: {
           extend: {
             fontFamily: {
-              'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+              'sans': ['Sora', 'system-ui', 'sans-serif'],
+              'mono': ['Space Mono', 'monospace']
+            },
+            colors: {
+              ink: 'var(--ink)',
+              paper: 'var(--paper)',
+              offwhite: 'var(--offwhite)',
+              concrete: 'var(--concrete)',
+              hairline: 'var(--hairline)',
+              muted: 'var(--muted)',
+              secondary: 'var(--secondary)',
+              accent: 'var(--accent)'
             }
           }
         }
@@ -933,21 +1130,17 @@
       
       if (btnEn && btnEs) {
         if (currentLang === 'en') {
-          btnEn.classList.add('active', 'bg-black', 'text-white');
-          btnEs.classList.remove('active', 'bg-black', 'text-white');
+          btnEn.classList.add('active');
+          btnEs.classList.remove('active');
         } else {
-          btnEs.classList.add('active', 'bg-black', 'text-white');
-          btnEn.classList.remove('active', 'bg-black', 'text-white');
+          btnEs.classList.add('active');
+          btnEn.classList.remove('active');
         }
       }
       
       // Mobile
       document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
-        if (btn.dataset.lang === currentLang) {
-          btn.classList.add('bg-black', 'text-white');
-        } else {
-          btn.classList.remove('bg-black', 'text-white');
-        }
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
       });
     }
 
@@ -962,7 +1155,7 @@
       
       filtered.forEach(project => {
         const card = document.createElement('div');
-        card.className = `project-card bg-white border border-[#f4f4f4] overflow-hidden cursor-pointer group`;
+        card.className = `project-card overflow-hidden cursor-pointer group`;
         
         const title = project.title[currentLang];
         const location = project.location[currentLang];
@@ -974,15 +1167,15 @@
                  class="editorial-bw w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" 
                  alt="${projectImageAlt(project.images[0], project, 0)}">
           </div>
-          <div class="px-6 py-5">
+          <div class="px-6 py-6">
             <div class="flex items-start justify-between gap-3">
               <div>
-                <h3 class="font-semibold text-[17px] tracking-[-0.2px] leading-tight">${title}</h3>
-                <p class="text-[#555] text-sm mt-1.5">${location}</p>
+                <h3 class="font-bold text-[17px] tracking-[-0.2px] leading-tight text-ink" style="font-family: 'Sora', sans-serif;">${title}</h3>
+                <p class="label-mono mt-2">${location}</p>
               </div>
             </div>
-            <div class="mt-4">
-              <span class="inline-block text-[10px] uppercase tracking-[2px] text-[#666] px-2.5 py-[1px] border border-[#e5e5e5]">${categoryLabel}</span>
+            <div class="mt-5">
+              <span class="status-tag">${categoryLabel}</span>
             </div>
           </div>
         `;
@@ -1002,11 +1195,7 @@
         const label = filterLabels[filter][currentLang];
         btn.textContent = label;
         
-        if (filter === currentFilter) {
-          btn.classList.add('active', 'bg-black', 'text-white', 'border-black');
-        } else {
-          btn.classList.remove('active', 'bg-black', 'text-white', 'border-black');
-        }
+        btn.classList.toggle('active', filter === currentFilter);
       });
     }
 
@@ -1022,11 +1211,7 @@
         
         // Update active styles
         container.querySelectorAll('button').forEach(b => {
-          if (b === btn) {
-            b.classList.add('active', 'bg-black', 'text-white', 'border-black');
-          } else {
-            b.classList.remove('active', 'bg-black', 'text-white', 'border-black');
-          }
+          b.classList.toggle('active', b === btn);
         });
         
         renderProjects(currentFilter);
@@ -1040,18 +1225,18 @@
       
       articles.forEach(article => {
         const div = document.createElement('div');
-        div.className = `article-card bg-white border border-[#f4f4f4] p-7 cursor-pointer group`;
+        div.className = `article-card p-8 cursor-pointer group`;
         
         const title = article.title[currentLang];
         const excerpt = article.excerpt[currentLang];
         
         div.innerHTML = `
-          <div class="flex justify-between items-start mb-3">
-            <div class="uppercase text-[10px] tracking-[2.5px] text-[#666]">JOURNAL</div>
+          <div class="flex justify-between items-start mb-4">
+            <div class="label-mono">Journal</div>
           </div>
-          <h4 class="font-semibold text-[19px] leading-tight tracking-[-0.3px] mb-3 group-hover:underline decoration-1 underline-offset-4">${title}</h4>
-          <p class="text-[#444] text-[14.5px] leading-snug line-clamp-3">${excerpt}</p>
-          <div class="mt-5 text-xs tracking-widest text-black/70 group-hover:text-black transition">READ →</div>
+          <h4 class="font-bold text-[19px] leading-tight tracking-[-0.3px] mb-3 text-ink" style="font-family: 'Sora', sans-serif;">${title}</h4>
+          <p class="text-secondary text-[14.5px] leading-snug line-clamp-3">${excerpt}</p>
+          <div class="mt-6 label-mono-bold text-ink group-hover:underline" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Read →</div>
         `;
         
         div.addEventListener('click', () => openArticleModal(article));
@@ -1292,6 +1477,38 @@
       });
     }
 
+    // Highlight active section in navigation (accent)
+    function setupNavScrollSpy() {
+      const sectionIds = ['projects', 'about', 'insights', 'contact'];
+      const navLinks = document.querySelectorAll('.nav-link[data-section], .mobile-nav-link[data-section]');
+
+      function setActiveSection(sectionId) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.section === sectionId);
+        });
+      }
+
+      if (!('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      }, {
+        rootMargin: '-35% 0px -55% 0px',
+        threshold: [0, 0.15, 0.35]
+      });
+
+      sectionIds.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+      });
+    }
+
     // Navbar scroll styling
     function setupNavbarScroll() {
       const navbar = document.getElementById('navbar');
@@ -1380,6 +1597,7 @@
       setupMobileMenu();
       setupSmoothScroll();
       setupNavbarScroll();
+      setupNavScrollSpy();
       setupContactForm();
       setupScrollAnimations();
       
